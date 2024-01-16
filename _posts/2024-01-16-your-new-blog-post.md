@@ -1,0 +1,165 @@
+# MIKROTIK
+
+As a good start to face Networking concepts we can use MikroTik.
+Mikrotik is a uncomplicated platform to implement a way to networking library.
+
+
+## Install and usage
+
+A way of simple and fast learn networks concepts as well as cheap solution for real work.
+First of all how to run a home lab with mikrotik
+we use an ordinary PC as our homelab platform
+
+Step by step
+
+1. Install Debian GNU/Linux stable release as our OS
+2. Install Virtulabox as virtualization system which works based on libvirt library on linux
+
+[Mikrotik website](https://mikrotik.com/)
+download mikrotik RouterOS x86 iso image
+
+Virtualbox
+
+Create new virtual machine and then select Other unknown 64 bit
+procede with regular installation process and then enable Vtx virtualization to speed up proposes.
+in system process settings.
+
+Start created virtual machine put it `mikrotik-7.10.1.iso` to CD drive and let it install by press i and enter key in boot screen
+
+let it install OS and exit iso file
+
+first start
+
+login to console
+
+    user: admin
+    password: empty
+
+Run command to get IP from internal dhcp server
+
+    /ip dhcp-client add interface=ether1 disabled=no
+    ip/address/ print
+
+You must see somethings similar to
+
+    [admin@MikroTik] > ip/address/print 
+    Flags: D - DYNAMIC
+    Columns: ADDRESS, NETWORK, INTERFACE
+    #   ADDRESS           NETWORK      INTERFACE
+    0 D 10.0.2.15/24      10.0.2.0     ether1 
+
+Now we have a valid for this machine 
+we can use NAT interface on virtualbox to connect from Host(local machine) to Guest(Mikrotik machine)
+
+Inside virtualbox setting network adaptor NAT enable port forwarding feature and insert these two rules to enable ssh and webaccess to Mikrotik from Host machine.
+
+| Name          | Protocol | Host IP   | Host Port | Guest IP  | Guest Port |
+| SSH           | TCP      | 127.0.0.1 | 9090      | 10.0.2.15 | 22         |
+| WebUI(webfig) | TCP      | 127.0.0.1 | 8080      | 10.0.2.15 | 80         |
+
+This means that every packet send 9090 and 8080 on localhost redirects to corresponding port on IP address 10.0.2.15 
+
+
+
+How to use MikroTik from HOST?
+
+We have three way to use Mikrotik virtualized solution
+
+* In Web Browser(i.e. Firefox defenitly) webUI throu mikrotik webfig feature.
+open up `127.0.0.1:8080` in browser.
+
+but how can use a named address to achive webUI?
+
+instead of using IP:Port tuple we want to type a domain like `webfig.ir` to connect.
+
+For that purpose we need a reverse proxy solution.
+
+some notest about reverse proxy
+
+
+Nginx
+
+nginx use as reverse proxy
+
+```/etc/nginx/conf.d/local_proxy.conf```
+
+    server {
+        listen 80;
+        server_name webfig.ir;
+    
+        location / {
+            proxy_pass http://127.0.0.1:8080/;
+        }
+    }
+
+Above config block create a new server which serves on local system.
+
+This server
+
+Input
+
+* `webfig.ir:80`
+
+Output
+* `http://127.0.0.1:8080`
+
+Serves on hostname `webfig.ir` and port `80`
+accepts traffics on above address
+
+Redirects all traffics to `http://127.0.0.1:8080`
+
+    # check nginx config
+    sudo nginx -t
+    # restart nginx service to take effect changes
+    systemctl restart nginx
+
+To use `webfig.ir` in browser next step is to resolve address to IP.
+simplest solution is to use `/etc/hosts`
+
+`127.0.0.1       webfig.ir`
+
+Or we can use `simpleproxy` program to implement reverse proxy
+
+    sudo apt install simpleproxy
+    sudo simpleproxy -L webfig.ir:80 -R 127.0.0.1:8080
+
+After all we can use `http://webfig.ir` as MikroTik webUI address in web browser.
+
+
+With terminal emulator ssh to MikroTik ssh server to get a Console access.
+
+    ssh -p 9090 admin@127.0.0.1
+
+    
+To use simpler command we need add config to `~/.ssh/config`
+
+      ssh mikrotik
+
+$ cat ~/.ssh/config                                                                                              
+
+    Host mikrotik                                                                                                
+        HostName 127.0.0.1                                                                                           
+        User admin                                                                                                   
+        Port 9090                                                                                                    
+        KexAlgorithms diffie-hellman-group-exchange-sha256 
+        
+Also we can get ride of password with copy public key to MikroTik.
+
+
+* With `winbox.exe` official program.
+
+``` sh
+
+    sudo apt install wine
+    wine winbox64.exe
+
+```
+
+
+
+## Resources
+
+* <https://askubuntu.com/a/1001801/678872>
+* <https://manpages.ubuntu.com/manpages/lunar/en/man1/simpleproxy.1.html>
+* <https://www.baeldung.com/linux/mapping-hostnames-ports>
+* <https://superuser.com/a/1670774/1787481>
