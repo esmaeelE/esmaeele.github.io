@@ -33,4 +33,10 @@ $ sudo apt install pdftk
 $ pdftk output.pdf shuffle even odd output haj_sayyah_.pdf
 ```
 
+## Final change
+At last we need replace cover page from original book. here is the command.
+
+```
+$ pdftk A=haj_sayyah_.pdf B=haj_sayah.pdf cat B1 A3-end output out1.pdf
+```
 
