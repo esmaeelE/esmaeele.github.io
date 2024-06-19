@@ -40,3 +40,5 @@ At last we need replace cover page from original book. here is the command.
 $ pdftk A=haj_sayyah_.pdf B=haj_sayah.pdf cat B1 A3-end output out1.pdf
 ```
 
+Here is the output file, [Haj sayyah](../static/hajsayah.pdf)
+
