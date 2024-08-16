@@ -11,6 +11,9 @@ Khaterate [Haj sayyah esfahani(خاطرات حاج سیاح اصفهانی)](htt
 
 ```
 $ sudo apt install mutool
+# or in newer debian install
+$ sudo apt install mupdf-tools
+
 $ mutool poster -x 2 haj_sayah.pdf output.pdf
 ```
 
