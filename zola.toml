@@ -105,7 +105,7 @@ search_title = "Search"
 search_description = "Find posts by title or content"
 
 [extra.cela.color]
-default_theme = "dark"
+default_theme = "light"
 remember_choice = true
 
 [extra.cela.global]
