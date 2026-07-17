@@ -31,6 +31,7 @@ nav_about = "About"
 nav_blog = "Blog"
 nav_notes = "Notes"
 nav_projects = "Projects"
+nav_books = "Books"
 nav_home = "Home"
 nav_tags = "Tags"
 nav_categories = "Categories"
@@ -70,6 +71,7 @@ navigation = [
   {path = "/blog", title = "Blog", title_key = "nav_blog"},
   {path = "/projects", title = "Projects", title_key = "nav_projects"},
   {path = "/notes", title = "Notes", title_key = "nav_notes"},
+  {path = "/books", title = "Books", title_key = "nav_books"},
   {path = "/about", title = "About", title_key = "nav_about"},
 ]
 
