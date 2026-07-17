@@ -1,0 +1,16 @@
+{% set meta_page = meta_page | default(value=page) %}
+{% set formatted_date_long = meta_page.date | date(format="%Y-%m-%d %H:%M:%S %z") %}
+{% set formatted_date_short = meta_page.date | date(format=config.extra.cela.date_format) %}
+
+<div class="post-meta-items">
+  <span class="meta-item meta-date" title="{{ formatted_date_long }}">{{ formatted_date_short }}</span>
+
+  {% if config.extra.cela.show_reading_time and config.extra.cela.show_reading_time == true %}
+  <span class="meta-item meta-reading-time">{{ meta_page.reading_time }} min read</span>
+  {% endif %}
+
+  {% if config.extra.cela.show_word_count and config.extra.cela.show_word_count == true %}
+  <span class="meta-item meta-word-count">{{ meta_page.word_count }} words</span>
+  {% endif %}
+
+</div>

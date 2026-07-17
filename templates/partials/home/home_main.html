@@ -1,0 +1,26 @@
+<article class="first-entry home-info home-hero reveal-on-scroll">
+    <div class="hero-glow"></div>
+    <a class="home-logo" href="{{ get_url(path='') }}" aria-label="{{ config.title }} — Home">
+        <svg class="home-logo-mark" viewBox="0 0 50 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path style="fill:currentColor"
+                d="M 12.270265,1.9966968 V 2.442102 h 10.985976 v 9.68036 H 12.50726 v 0.474769 h 10.748981 v 9.712398 H 1.3364433 V 1.9971379 H 0.86090326 V 22.751899 H 23.731004 V 1.9966869 Z" />
+            <path style="fill:none;stroke:currentColor;stroke-width:0.574903"
+                d="M 32.198343,22.621669 40.600759,2.5585859 49.04204,22.613747" />
+            <path style="fill:currentColor" d="m 36.438812,12.346394 h 8.364306" />
+            <rect style="fill:currentColor" width="8.8630762" height="0.4188053" x="23.518629" y="22.305271" />
+            <rect style="fill:currentColor" width="9.8420162" height="0.4188053" x="1.0488266" y="1.9709774" />
+        </svg>
+    </a>
+    <header class="entry-header">
+        <h1>{{ config.extra.cela.home_title }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ config.extra.cela.home_content | markdown(inline=true) | safe }}
+    </div>
+    <footer class="entry-footer">
+        {% if config.extra.cela.show_home_social_icons | default(value=true) %}
+        {% include "partials/home/home_social_icons.html" %}
+        {% endif %}
+    </footer>
+</article>

@@ -1,0 +1,53 @@
+@layer components {
+  .first-entry {
+    position: relative;
+    display: flex;
+    min-height: 320px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin: theme("spacing.page-x") 0 3rem;
+    overflow: hidden;
+  }
+
+  .first-entry .entry-header {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .first-entry .entry-header h1 {
+    font-size: 42px;
+    line-height: 1.3;
+  }
+
+  .first-entry .entry-content {
+    margin: 14px 0;
+    font-size: 16px;
+    -webkit-line-clamp: 3;
+  }
+
+  .first-entry .entry-footer {
+    font-size: 14px;
+  }
+
+  .home-info .entry-content {
+    -webkit-line-clamp: unset;
+  }
+  .home-logo {
+    display: inline-flex;
+    margin-bottom: 1.5rem;
+  }
+
+  .home-logo-mark {
+    width: 130px;
+    height: auto;
+    color: var(--text-main);
+    transition: opacity 0.16s ease;
+  }
+
+  .home-logo:hover .home-logo-mark {
+    opacity: 0.8;
+  }
+}

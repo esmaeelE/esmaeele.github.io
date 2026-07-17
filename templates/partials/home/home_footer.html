@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="footer-credits">
+    {% if config.extra.cela.copyright %}
+    <span>{{ config.extra.cela.copyright }}</span>
+    {% else %}
+    <span>&copy; {{ now() | date(format="%Y") }} <a href="{{ config.base_url }}">{{ config.author }}</a></span>
+    {% endif %}
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/edwardzcn-decade/cela" rel="noopener" target="_blank">Cela</a>
+    </span>
+  </div>
+  <div class="footer-scheme">
+    <select id="scheme-select" title="Color scheme" aria-label="Color scheme">
+      <option value="catppuccin-latte">Latte</option>
+      <option value="catppuccin-macchiato">Macchiato</option>
+      <option value="rose-pine">Rosé Pine</option>
+      <option value="nord">Nord</option>
+    </select>
+  </div>
+</footer>
+
+{% if config.extra.cela.show_scroll_to_top %}
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+      <path d="M12 6H0l6-6z" />
+  </svg>
+</a>
+{% endif %}
+
+{% set is_search = (page and page.extra and page.extra.is_search_page) or (section and section.extra and section.extra.is_search_page) %}
+{% if is_search %}
+<script src="{{ get_url(path='js/search.js') | safe }}"></script>
+{% endif %}

@@ -1,0 +1,114 @@
+base_url = "https://esmaeele.github.io"
+title = "EsmaeelE - Free Software enthusiast"
+description = "DevOps, Kubernetes, and Infrastructure Automation"
+author = "EsmaeelE"
+default_language = "en"
+output_dir = "public"
+preserve_dotfiles_in_output = true
+compile_sass = false
+minify_html = true
+ignored_content = []
+ignored_static = []
+
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+feed_limit = 50
+generate_sitemap = true
+generate_robots_txt = true
+
+taxonomies = [
+  {name = "tags", feed = true},
+  {name = "categories", feed = true},
+]
+
+build_search_index = true
+
+[search]
+index_format = "fuse_json"
+
+[translations]
+nav_about = "About"
+nav_blog = "Blog"
+nav_notes = "Notes"
+nav_projects = "Projects"
+nav_home = "Home"
+nav_tags = "Tags"
+nav_categories = "Categories"
+
+[markdown]
+render_emoji = true
+smart_punctuation = false
+bottom_footnotes = true
+
+[markdown.highlighting]
+theme = "catppuccin-mocha"
+
+[link_checker]
+skip_prefixes = ["https://www.youtube.com"]
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+paths_keep_dates = false
+
+[extra]
+toc_open = false
+enable_mathjax = false
+
+[extra.cela]
+default_keywords = ["DevOps", "Kubernetes", "Docker", "CI/CD", "Linux", "Terraform"]
+favicon = "favicon.ico"
+favicon16x16 = "favicon-16x16.png"
+favicon32x32 = "favicon-32x32.png"
+header_title = "EsmaeelE"
+
+date_format = "%Y-%m-%d"
+show_home_title = true
+home_title = "EsmaeelE"
+
+navigation = [
+  {path = "/blog", title = "Blog", title_key = "nav_blog"},
+  {path = "/projects", title = "Projects", title_key = "nav_projects"},
+  {path = "/notes", title = "Notes", title_key = "nav_notes"},
+  {path = "/about", title = "About", title_key = "nav_about"},
+]
+
+show_home_content = true
+home_content = "Free software enthusiast and Systems Engineer"
+home_content_dir = "blog"
+
+show_home_social_icons = true
+social_icons = [
+  {path = "https://github.com/esmaeelE", title = "GitHub", icon = "github"},
+  {path = "mailto:esmaeelEE@protonmail.com", title = "Email", icon = "email"},
+  {path = "https://stackexchange.com/users/10166230/esmaeele?tab=accounts", title = "Stack Overflow", icon = "stackoverflow"},
+]
+
+taxonomies_desc = []
+show_taxonomies_tail = false
+show_cela_logo = true
+show_code_copy_buttons = true
+show_header_title = false
+show_post_meta = true
+show_post_nav_links = true
+show_reading_time = false
+card_hover_border = false
+show_scroll_to_top = true
+show_taxonomies_description = false
+
+show_theme_toggle = true
+show_toc = true
+unfold_toc = false
+show_word_count = false
+
+search_title = "Search"
+search_description = "Find posts by title or content"
+
+[extra.cela.color]
+default_theme = "dark"
+remember_choice = true
+
+[extra.cela.global]
+title_show = true
+title_prefix = ""
+language_directions = { en = "ltr", fa = "rtl" }

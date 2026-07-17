@@ -1,0 +1,21 @@
+@import "./base/reset.css";
+
+@import "./components/layout.css";
+@import "./components/navigation.css";
+@import "./components/shared.css";
+@import "./components/home.css";
+@import "./components/taxonomy.css";
+@import "./components/cards.css";
+@import "./components/post.css";
+@import "./components/search.css";
+@import "./components/terms.css";
+@import "./components/motion.css";
+
+@import "./vendor/scrollbar.css";
+@import "./vendor/chroma.css";
+@import "./components/custom.css";
+@import "./utilities/responsive.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

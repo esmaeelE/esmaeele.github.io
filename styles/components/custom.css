@@ -1,0 +1,811 @@
+/* Custom CSS - UI/UX Improvements */
+
+/* ========================================
+   BASE & TYPOGRAPHY
+   ======================================== */
+
+body {
+  font-family: "Vazirmatn", -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Persian text styling */
+.post-content[dir="rtl"] {
+  font-family: "Vazirmatn", "Tahoma", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ========================================
+   CODE BLOCKS - Maximum Readability
+   ======================================== */
+
+/* Code block container */
+.post-content pre,
+.post-content .highlight {
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  border: 1px solid #444c56;
+  overflow: hidden;
+  background: #0d1117;
+}
+
+.post-content pre {
+  background: #0d1117;
+}
+
+.post-content pre code {
+  display: block;
+  padding: 1.5rem;
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #f0f6fc;
+  background: transparent;
+  border: none;
+  overflow-x: auto;
+  tab-size: 4;
+}
+
+/* Language label */
+.post-content .highlight[data-lang]::before {
+  content: attr(data-lang);
+  display: block;
+  padding: 10px 16px;
+  background: #161b22;
+  border-bottom: 1px solid #444c56;
+  color: #c9d1d9;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Inline code */
+.post-content code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  background: #1c2128;
+  color: #79c0ff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 500;
+  border: 1px solid #444c56;
+  word-break: break-word;
+}
+
+.post-content pre code {
+  background: transparent;
+  color: #f0f6fc;
+  padding: 0;
+  border: none;
+}
+
+/* Syntax highlighting - High Contrast */
+.post-content .highlight .k,
+.post-content .highlight .kd,
+.post-content .highlight .kn,
+.post-content .highlight .kp,
+.post-content .highlight .kr {
+  color: #ff7b72;
+  font-weight: 700;
+}
+
+.post-content .highlight .s,
+.post-content .highlight .s1,
+.post-content .highlight .s2,
+.post-content .highlight .sb,
+.post-content .highlight .sc {
+  color: #a5d6ff;
+  font-weight: 600;
+}
+
+.post-content .highlight .c,
+.post-content .highlight .cm,
+.post-content .highlight .c1 {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.post-content .highlight .nf,
+.post-content .highlight .na {
+  color: #d2a8ff;
+  font-weight: 600;
+}
+
+.post-content .highlight .nb {
+  color: #79c0ff;
+}
+
+.post-content .highlight .o {
+  color: #ff7b72;
+}
+
+.post-content .highlight .nc {
+  color: #ffa657;
+}
+
+.post-content .highlight .mi {
+  color: #79c0ff;
+}
+
+.post-content .highlight .se {
+  color: #ffa657;
+}
+
+/* Make all code text lighter */
+.post-content .highlight .err,
+.post-content .highlight .p,
+.post-content .highlight .nx {
+  color: #f0f6fc;
+}
+
+/* ========================================
+   TABLES - Clean Modern Design
+   ======================================== */
+
+.post-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.post-content thead th {
+  background: #161b22;
+  color: #c9d1d9;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.post-content tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.post-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.post-content tbody tr:hover td {
+  background: var(--surface-muted);
+}
+
+/* ========================================
+   BLOCKQUOTES - Callout Style
+   ======================================== */
+
+.post-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  border-left: 4px solid #58a6ff;
+  background: linear-gradient(90deg, rgba(56, 139, 253, 0.08), transparent);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-main);
+}
+
+.post-content blockquote p {
+  margin: 0;
+}
+
+/* ========================================
+   HEADINGS - Better Hierarchy
+   ======================================== */
+
+.post-content h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+.post-content h3 {
+  margin: 2rem 0 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #58a6ff;
+}
+
+.post-content h4 {
+  margin: 1.5rem 0 0.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ========================================
+   LINKS - Subtle Hover
+   ======================================== */
+
+.post-content a {
+  color: #58a6ff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.post-content a:hover {
+  border-bottom-color: #58a6ff;
+}
+
+/* ========================================
+   HORIZONTAL RULE - Minimal
+   ======================================== */
+
+.post-content hr {
+  margin: 2.5rem 0;
+  border: none;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* ========================================
+   POST CARDS - Clean Design
+   ======================================== */
+
+.post-entry {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--surface-bg);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.post-entry:hover {
+  border-color: #58a6ff;
+  box-shadow: 0 4px 16px rgba(56, 139, 253, 0.12);
+  transform: translateY(-2px);
+}
+
+.post-entry .entry-header h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.post-entry .entry-content {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.post-entry .entry-footer {
+  margin-top: 0.75rem;
+  font-size: 13px;
+}
+
+/* ========================================
+   TAGS - Pill Style
+   ======================================== */
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.post-tags a {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #161b22;
+  color: #c9d1d9;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #30363d;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.post-tags a:hover {
+  background: #58a6ff;
+  color: #0d1117;
+  border-color: #58a6ff;
+}
+
+/* ========================================
+   POST META - Subtle Pills
+   ======================================== */
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0.75rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ========================================
+   NAVIGATION - Clean Header
+   ======================================== */
+
+.nav {
+  border-bottom: 1px solid var(--border-color);
+  background: var(--theme-bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(var(--theme-bg), 0.9);
+}
+
+.logo a {
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+}
+
+#menu a span {
+  font-weight: 500;
+}
+
+/* ========================================
+   PAGE HEADER - Bold Title
+   ======================================== */
+
+.page-header h1 {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.page-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* ========================================
+   POST HEADER - Better Title
+   ======================================== */
+
+.post-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.post-description {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ========================================
+   FIRST ENTRY - Hero Card
+   ======================================== */
+
+.first-entry {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.first-entry .entry-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.first-entry .entry-content {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   TOC - Sidebar Style
+   ======================================== */
+
+.toc {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.toc summary {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.toc .inner {
+  margin-top: 0.75rem;
+}
+
+.toc li {
+  padding: 4px 0;
+}
+
+.toc a {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.toc a:hover {
+  color: #58a6ff;
+}
+
+/* ========================================
+   SEARCH - Clean Input
+   ======================================== */
+
+.search-box input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--surface-bg);
+  color: var(--text-main);
+  font-size: 15px;
+  transition: border-color 0.15s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(56, 139, 253, 0.15);
+}
+
+/* ========================================
+   FOOTER - Minimal
+   ======================================== */
+
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  margin-top: 4rem;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.footer a {
+  color: var(--text-muted);
+  border: none;
+}
+
+.footer a:hover {
+  color: var(--text-main);
+}
+
+/* ========================================
+   SCROLL TO TOP
+   ======================================== */
+
+.top-link {
+  background: #58a6ff;
+  color: #0d1117;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(56, 139, 253, 0.3);
+}
+
+.top-link:hover {
+  background: #79c0ff;
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   RESPONSIVE - Mobile First
+   ======================================== */
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 1.75rem !important;
+  }
+
+  .post-title {
+    font-size: 1.5rem !important;
+  }
+
+  .first-entry {
+    padding: 1.25rem;
+  }
+
+  .first-entry .entry-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .post-content pre code {
+    font-size: 12.5px;
+    padding: 1rem;
+  }
+
+  .post-content table {
+    font-size: 13px;
+  }
+
+  .post-content th,
+  .post-content td {
+    padding: 8px 12px;
+  }
+}
+
+/* ========================================
+   RTL SUPPORT - Persian/Farsi Content
+   ======================================== */
+
+/* RTL blockquote */
+.post-content[dir="rtl"] blockquote {
+  border-left: none;
+  border-right: 4px solid #58a6ff;
+  border-radius: 8px 0 0 8px;
+  background: linear-gradient(270deg, rgba(56, 139, 253, 0.08), transparent);
+  text-align: right;
+}
+
+/* RTL headings */
+.post-content[dir="rtl"] h1,
+.post-content[dir="rtl"] h2,
+.post-content[dir="rtl"] h3 {
+  text-align: right;
+}
+
+/* RTL lists */
+.post-content[dir="rtl"] ul,
+.post-content[dir="rtl"] ol {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+/* RTL paragraphs */
+.post-content[dir="rtl"] p {
+  text-align: right;
+  line-height: 2;
+}
+
+/* Code blocks stay LTR in RTL content */
+.post-content[dir="rtl"] pre,
+.post-content[dir="rtl"] code,
+.post-content[dir="rtl"] table {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Persian text styling */
+.post-content[dir="rtl"] {
+  font-family: "Vazirmatn", "Tahoma", "Segoe UI", system-ui, sans-serif;
+  line-height: 2;
+}
+
+/* Poetry/stanza styling */
+.post-content div[style*="text-align: right"] {
+  line-height: 2.2;
+}
+
+/* RTL hr */
+.post-content[dir="rtl"] hr {
+  margin: 2rem auto;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+.post-entry {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(56, 139, 253, 0.3);
+  color: inherit;
+}
+
+/* ========================================
+   PROFILE IMAGE (About Page)
+   ======================================== */
+
+.post-content img[src*="profile"] {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+}
+
+/* ========================================
+   ABOUT PAGE LAYOUT
+   ======================================== */
+
+@media (min-width: 768px) {
+  .post-content div[style*="display: flex"] {
+    gap: 2rem;
+    align-items: flex-start;
+  }
+}
+
+/* ========================================
+   HOMEPAGE SECTIONS
+   ======================================== */
+
+/* Reveal Animation */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Badge */
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #58a6ff, #bc8cff);
+  color: #0d1117;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: fadeInDown 0.6s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Section */
+.first-entry {
+  position: relative;
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  background: var(--surface-bg);
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(56, 139, 253, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+.first-entry .entry-header h1 {
+  position: relative;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #f0f6fc 0%, #8b949e 50%, #58a6ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.8s ease;
+}
+
+.hero-subtitle {
+  position: relative;
+  margin: 0 0 1rem;
+  font-size: 18px;
+  color: #8b949e;
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.first-entry .entry-content {
+  position: relative;
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 550px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.8;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.first-entry .entry-footer {
+  position: relative;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .first-entry {
+    padding: 3rem 1rem 2.5rem;
+  }
+
+  .first-entry .entry-header h1 {
+    font-size: 2.25rem;
+  }
+
+  .first-entry .entry-content {
+    font-size: 16px;
+  }
+}

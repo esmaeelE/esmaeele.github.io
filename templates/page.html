@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+{% block main %}
+{% set content_dir = config.extra.cela.home_content_dir | default(value = "blog") | trim_start_matches(pat="content/") %}
+{% set posts_section_path = content_dir ~ '/_index.md' %}
+{% set posts_section = false %}
+{% set root_section = get_section(path="_index.md", lang=lang) %}
+{# NOTE: Supports only first-level home_content_dir like "blog"; nested values like "blog/engineering" hide the Posts breadcrumb. See https://github.com/edwardzcn-decade/cela/pull/4 #}
+{% if root_section.subsections is containing(posts_section_path) %}
+{% set posts_section = get_section(path=posts_section_path, lang=lang) %}
+{% endif %}
+{% set post_dir = page.extra.dir | default(value="") %}
+<article class="post-single">
+  <header class="post-header">
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="{{ get_url(path='', lang=lang) }}">Home</a>&nbsp;»&nbsp;
+          {% if posts_section %}
+          <a href="{{ posts_section.permalink }}">Posts</a>&nbsp;»&nbsp;
+          {% endif %}
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+      </nav>
+      <h1 class="post-title"{% if post_dir %} dir="{{ post_dir }}"{% endif %}>{{ page.title }}</h1>
+      {% if page.description %}
+      <div class="post-description"{% if post_dir %} dir="{{ post_dir }}"{% endif %}>
+          {{ page.description }}
+      </div>
+      {% endif %}
+      {% if page.summary and page.summary != page.description %}
+      <section class="post-summary"{% if post_dir %} dir="{{ post_dir }}"{% endif %}>
+        <h2>Featured summary</h2>
+        <p>{{ page.summary | safe }}</p>
+      </section>
+      {% endif %}
+      {% if config.extra.cela.show_post_meta | default(value=true) %}
+      <div class="post-meta">
+      {% include "partials/post/post_meta.html" %}
+
+      </div>
+      {% endif %}
+  </header>
+
+  {% if page.extra.cover %}
+  <figure class="post-cover">
+    <img src="{{ page.extra.cover }}" alt="{{ page.title }}">
+    {% if page.extra.cover_caption %}
+    <figcaption>{{ page.extra.cover_caption }}</figcaption>
+    {% endif %}
+  </figure>
+  {% endif %}
+
+  {% if config.extra.cela.show_toc | default(value=true) %}
+  {% include "partials/post/post_toc.html" %}
+  {% endif %}
+
+  {% if page.content %}
+  <div class="post-content"{% if post_dir %} dir="{{ post_dir }}"{% endif %}>
+      {{ page.content | safe }}
+  </div>
+  {% endif %}
+
+  <footer class="post-footer">
+      {% if page.taxonomies.tags %}
+      <ul class="post-tags">
+          {% for tag in page.taxonomies.tags %}
+          {% set tag_url = get_taxonomy_url(kind="tags", name=tag, lang=page.lang) %}
+          <li><a href="{{ tag_url }}">{{ tag }}</a></li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+    {% if config.extra.cela.show_post_nav_links | default(value=true) %}
+    {% include "partials/post/post_nav_links.html" %}
+    {% endif %}
+  </footer>
+
+</article>
+{% endblock %}
